@@ -1,0 +1,334 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Safira-Book-1",
+    "description": "",
+    "contact": {
+      "email": "aditya1511ge@gmail.com"
+    },
+    "version": "1.0.0",
+    "termsOfService": "http://swagger.io/terms/",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "User",
+      "description": "Operations about user",
+      "externalDocs": {
+        "description": "Find out more about our store",
+        "url": ""
+      }
+    },
+    {
+      "name": "Book",
+      "description": "Operations about book",
+      "externalDocs": {
+        "description": "Find out more about our store",
+        "url": ""
+      }
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json",
+    "application/x-www-form-urlencoded",
+    "multipart/form-data"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/user/signup": {
+      "post": {
+        "deprecated": false,
+        "tags": [
+          "User"
+        ],
+        "description": "User Signup",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "firstName",
+            "in": "formData",
+            "description": "Enter first name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "lastName",
+            "in": "formData",
+            "description": "Enter last name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "Enter your E-mail",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "Enter your password",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "cPassword",
+            "in": "formData",
+            "description": "Password and Confirm Password should be same",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "phoneNum",
+            "in": "formData",
+            "description": "Enter your phone number",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "subscribeNewsletter",
+            "in": "formData",
+            "description": "Enter 1 for Yes and 0 for No",
+            "required": false,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": [
+              "Username: ",
+              "Password: "
+            ]
+          }
+        ]
+      }
+    },
+    "/user/login": {
+      "post": {
+        "deprecated": false,
+        "tags": [
+          "User"
+        ],
+        "description": "User Login",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "Enter your E-mail",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "Enter your password",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": [
+              "Username: ",
+              "Password: "
+            ]
+          }
+        ]
+      }
+    },
+    "/book/addBookToStore": {
+      "post": {
+        "deprecated": false,
+        "tags": [
+          "Book"
+        ],
+        "description": "Add a book to store",
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "accessToken",
+            "in": "header",
+            "description": "Enter access token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "bookName",
+            "in": "formData",
+            "description": "Enter book name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "brand",
+            "in": "formData",
+            "description": "Enter brand",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "bookPrice",
+            "in": "formData",
+            "description": "Enter book price",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "rating",
+            "in": "formData",
+            "description": "Enter rating",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "productCode",
+            "in": "formData",
+            "description": "Enter productCode",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "exTax",
+            "in": "formData",
+            "description": "Enter ExTax",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "availability",
+            "in": "formData",
+            "description": "Enter 1 for Yes and 0 for No",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "bookImage",
+            "in": "formData",
+            "description": "Select image for book",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": [
+              "Username: ",
+              "Password: "
+            ]
+          }
+        ]
+      }
+    },
+    "/book/allBooksInStore": {
+      "get": {
+        "deprecated": false,
+        "tags": [
+          "Book"
+        ],
+        "description": "Fetch list of all available books in the store",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "accessToken",
+            "in": "header",
+            "description": "Enter access token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "formData",
+            "description": "page",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "limit",
+            "in": "formData",
+            "description": "limit",
+            "required": false,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "basicAuth": [
+              "Username: ",
+              "Password: "
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  }
+}
